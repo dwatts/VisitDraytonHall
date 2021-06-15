@@ -1,0 +1,955 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  margin-top: 0px;
+}
+
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+/**Navbar Stuff**/
+
+.navbar {
+  overflow: hidden;
+  background-color: #a5a5a5;
+  position: fixed;
+  top: 0; 
+  width: 100%;
+  height: 52px; 
+  opacity: 0.9;
+  z-index: 1011 !important;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-line {
+  overflow: hidden;
+  background-color: white;
+  position: fixed;
+  top: 48px; 
+  width: 100%; 
+  height: 2px;   
+  z-index: 1001;
+  opacity: 0.9;
+}
+
+.titleHolder {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Trispace', sans-serif;
+  font-weight: 800 !important;
+  font-size: 25px !important;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.subTitle {
+  font-family: 'Trispace', sans-serif;
+  font-weight: 300 !important;
+  font-size: 22px !important;
+  color: white; 
+}
+
+#helpHolder {
+  position: absolute;
+  right: 15px;
+  z-index: 1000;
+}
+
+.helpButton {
+  padding: 4px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  text-align: center;
+  text-decoration: none;
+  border: 0px;
+  /*box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);*/
+}
+
+.helpButton-clicked {
+  background-color: #66C2A5;    
+}
+
+.helpButton:hover {
+  background-color: #66C2A5;
+  cursor: pointer;
+}
+
+.fa-question-circle {
+  font-size: 24px;
+}
+
+/**Zoom Button Holder**/
+
+#zoomButtonDiv {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  /*background-color: rgba(235, 235, 235, 0.9);*/
+  background-color: rgba(146, 146, 146, 0.9);
+  width: 278px;
+  height: 60px;
+  z-index: 1001;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+#zoomContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#zoomButtons {
+  z-index: 1002;
+}
+
+#homeButton {
+  z-index: 1002;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.labelButton {
+  width: 110px;
+  height: 35px;
+  font-family: 'Trispace', sans-serif;
+  font-weight: 400 !important;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-right: 5px;
+  border: 0px;
+  background-color: #fff;
+  /*box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);*/
+}
+
+.labelButton-clicked {
+  background-color: #66C2A5;    
+}
+
+.labelButton:hover {
+  background-color: #66C2A5;
+  cursor: pointer;
+}
+
+.ButtonTwo {
+  width: 110px;
+  height: 35px;
+  font-family: 'Trispace', sans-serif;
+  font-weight: 400 !important;
+  font-size: 14px;
+  display: block;
+  border-radius: 5px;
+  border: 0px;
+  background-color: #fff;
+  margin-left: 5px;
+  display: none;
+  /*box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);*/
+}
+
+.ButtonTwo:hover {
+  background-color: #66C2A5;
+  cursor: pointer;
+}
+
+/**Tour Button Holder**/
+
+.Button {
+  width: 110px;
+  height: 35px;
+  font-family: 'Trispace', sans-serif;
+  font-weight: 400 !important;
+  font-size: 14px;
+  display: block;
+  border-radius: 5px;
+  border: 0px;
+  background-color: #fff;
+  /*box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);*/
+}
+
+.Button:hover {
+  background-color: #66C2A5;
+  cursor: pointer;
+}
+
+#tourButtonDiv {
+  position: absolute;
+  bottom: 20px;
+  left: 310px;
+  background-color: rgba(146, 146, 146, 0.9);
+  width: 155px;
+  height: 60px;
+  z-index: 1001;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+/**General Styling**/
+
+h1 {
+  font-family: 'Trispace', sans-serif;
+  font-weight: 600 !important;
+  font-size: 26px !important;
+  display: inline-block;
+  margin-top: 13px !important;
+  margin-bottom: 13px !important;
+}
+
+h2 {
+  font-family: 'Trispace', sans-serif;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+h2.desc {
+    padding-left: 3px;
+    padding-bottom: 5px;
+}
+
+h3 {
+  font-family: 'Trispace', sans-serif;
+  font-weight: 300 !important;
+  font-size: 12px !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+h3.desc {
+  padding-left: 3px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+
+td {
+  width: 50%;
+  vertical-align: top;
+  padding-bottom: 3px;
+}
+
+a {
+  color:  #66C2A5 !important;
+}
+
+a:hover {
+  color: #000 !important;
+}
+
+p {
+  font-size: 13px;
+}
+
+/********Popup Styling********/
+
+.popupImage {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  border: .5px solid #e6e6e6;
+}
+
+.esri-ui {
+  z-index: 1002;
+}
+
+.esri-popup__main-container {
+  border-radius: 4px !important;
+  border: 0px solid #000;
+  width: 430px !important;
+  height: auto;
+  margin-top: 55px;
+  /*top: 55px;*/
+}
+
+.esri-widget {
+  padding-bottom: 0px !important;
+  background-color: rgba(235, 235, 235, 0.9) !important;
+}
+
+/*.esri-feature__main-container {
+  top: 112px !important;
+}*/
+
+.esri-popup__title {
+  padding: 5px !important;
+}
+
+.esri-popup__header-title {
+  margin: 0px 0px 0px 0px !important;
+  padding-bottom: 0px;
+}
+
+.esri-popup__header-title:hover {
+  background-color: rgba(255,255,255, 0.9);
+}
+
+.esri-popup__header {
+  padding-bottom: 13px;
+}
+
+.esri-popup__button {
+  color: #404040 !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+.esri-popup__button:hover {
+  color: #66C2A5 !important;
+  background-color: transparent !important;
+}
+
+/***Nav Button Styling***/
+
+.esri-home {
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+  background-color: #fff !important;
+}
+
+.esri-zoom  {
+  background-color: transparent !important;
+}
+
+.esri-ui-corner .esri-component {
+  box-shadow: none !important;
+}
+
+.esri-zoom .esri-widget--button:last-child {
+  border-top: 0px solid #000000 !important;
+}
+
+.esri-navigation-toggle:hover,
+.esri-navigation-toggle:focus {
+  background-color: transparent !important;
+}
+
+.esri-zoom .esri-widget--button {
+  color: #000 !important;
+  background-color: #fff !important;
+  border: 0px solid #000 !important;
+  border-radius: 5px !important;
+  margin-top: 0px !important;
+  margin-left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+.esri-widget--button:hover {
+  background-color: #66C2A5 !important;
+  color: #000 !important;
+}
+
+/*******Carousel Code Start********/
+
+.esri-icon-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  z-index: 100;
+  color: #333;
+}
+
+.esri-icon-arrow-right-circled:hover {
+  color: #66c2a5;
+  cursor: pointer;  
+}
+
+.esri-icon-arrow-left-circled:hover {
+  color: #66c2a5;
+  cursor: pointer;  
+}
+
+.esri-icon-close:hover {
+  color: #66c2a5;
+  cursor: pointer;  
+}
+
+ul.slides {
+  position: absolute;
+  width: 443px;
+  height: calc(100% - 170px);
+  left: 20px;
+  bottom: 100px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 1000;
+  border: 0px solid #8f8f8f;
+  border-radius: 5px;
+  display: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) !important;    
+}
+
+li.slide {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*display: flex;*/
+  color: #000;
+  transition: .5s transform ease-in-out;
+}
+
+#content {
+  overflow-y: auto;
+  width: 91%;
+  height: calc(100% - 90px);
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 33px;
+  padding-right: 3px;
+}
+
+.imageBox {
+    display: inline-block;
+    width: 100%;
+    border-radius: 5px;
+    /*border: .5px solid #8f8f8f;*/
+}
+
+.textBox {
+    width: 100%;
+    height: 50%;
+    font-family: 'Trispace', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    display: inline-block;   
+}
+
+.slide:nth-of-type(1) {
+  background-color: rgba(235, 235, 235, 0.9);
+}
+
+.slide:nth-of-type(2) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 100%;
+}
+
+.slide:nth-of-type(3) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 200%;
+}
+
+.slide:nth-of-type(4) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 300%;
+}
+
+.slide:nth-of-type(5) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 400%;
+}
+
+.slide:nth-of-type(6) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 500%;
+}
+
+.slide:nth-of-type(7) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 600%
+}
+
+.slide:nth-of-type(8) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 700%;
+}
+
+.slide:nth-of-type(9) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 800%;
+}
+
+.slide:nth-of-type(10) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 900%;
+}
+
+.slide:nth-of-type(11) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 1000%;
+}
+
+.slide:nth-of-type(12) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 1100%;
+}
+
+.slide:nth-of-type(13) {
+  background-color: rgba(235, 235, 235, 0.9);
+  left: 1200%;
+}
+
+input[type="radio"] {
+  position: relative;
+  z-index: 100;
+  display: none;
+}
+
+.controls-visible {
+  position: absolute;
+  width: 100%;
+  bottom: 16px;
+  text-align: center;
+}
+
+.controls-visible label {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background-color: #333;
+  border-radius: 50%;
+  margin: 0 3px;
+  border: 2px solid #333;
+  z-index: 210;
+}
+
+.slides input[type="radio"]:nth-of-type(1):checked ~ .controls-visible label:nth-of-type(1) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(2):checked ~ .controls-visible label:nth-of-type(2) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(3):checked ~ .controls-visible label:nth-of-type(3) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(4):checked ~ .controls-visible label:nth-of-type(4) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(5):checked ~ .controls-visible label:nth-of-type(5) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(6):checked ~ .controls-visible label:nth-of-type(6) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(7):checked ~ .controls-visible label:nth-of-type(7) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(8):checked ~ .controls-visible label:nth-of-type(8) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(9):checked ~ .controls-visible label:nth-of-type(9) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(10):checked ~ .controls-visible label:nth-of-type(10) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(11):checked ~ .controls-visible label:nth-of-type(11) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(12):checked ~ .controls-visible label:nth-of-type(12) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(13):checked ~ .controls-visible label:nth-of-type(13) {
+  background-color: #fff;
+}
+
+.slides input[type="radio"]:nth-of-type(1):checked ~ .slide {
+  transform: translatex(0%);
+}
+
+.slides input[type="radio"]:nth-of-type(2):checked ~ .slide {
+  transform: translatex(-100%);
+}
+
+.slides input[type="radio"]:nth-of-type(3):checked ~ .slide {
+  transform: translatex(-200%);
+}
+
+.slides input[type="radio"]:nth-of-type(4):checked ~ .slide {
+  transform: translatex(-300%);
+}
+
+.slides input[type="radio"]:nth-of-type(5):checked ~ .slide {
+  transform: translatex(-400%);
+}
+
+.slides input[type="radio"]:nth-of-type(6):checked ~ .slide {
+  transform: translatex(-500%);
+}
+
+.slides input[type="radio"]:nth-of-type(7):checked ~ .slide {
+  transform: translatex(-600%);
+}
+
+.slides input[type="radio"]:nth-of-type(8):checked ~ .slide {
+  transform: translatex(-700%);
+}
+
+.slides input[type="radio"]:nth-of-type(9):checked ~ .slide {
+  transform: translatex(-800%);
+}
+
+.slides input[type="radio"]:nth-of-type(10):checked ~ .slide {
+  transform: translatex(-900%);
+}
+
+.slides input[type="radio"]:nth-of-type(11):checked ~ .slide {
+  transform: translatex(-1000%);
+}
+
+.slides input[type="radio"]:nth-of-type(12):checked ~ .slide {
+  transform: translatex(-1100%);
+}
+
+.slides input[type="radio"]:nth-of-type(13):checked ~ .slide {
+  transform: translatex(-1200%);
+}
+
+/* Left/Right Button Classes Below */
+
+.navigator {
+  position: absolute;
+  bottom: 0px;
+  transform: translatey(-50%);
+  width: 100%;
+  z-index: 100;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  display: none;
+}
+
+.navigator i {
+  font-size: 25px;
+  color: #333;
+}
+
+.slides input[type="radio"]:nth-of-type(1):checked ~ .navigator:nth-of-type(1) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(2):checked ~ .navigator:nth-of-type(2) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(3):checked ~ .navigator:nth-of-type(3) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(4):checked ~ .navigator:nth-of-type(4) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(5):checked ~ .navigator:nth-of-type(5) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(6):checked ~ .navigator:nth-of-type(6) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(7):checked ~ .navigator:nth-of-type(7) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(8):checked ~ .navigator:nth-of-type(8) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(9):checked ~ .navigator:nth-of-type(9) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(10):checked ~ .navigator:nth-of-type(10) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(11):checked ~ .navigator:nth-of-type(11) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(12):checked ~ .navigator:nth-of-type(12) {
+  display: flex;
+}
+
+.slides input[type="radio"]:nth-of-type(13):checked ~ .navigator:nth-of-type(13) {
+  display: flex;
+}
+
+/********Info Div********/
+
+#infoDiv {
+  width: 75%;
+  min-height: 520px;
+  max-width: 750px;
+  height: 40%;
+  max-height: 600px;
+  background-color: rgba(235, 235, 235, 0.9);
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: none;
+  z-index: 1300;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 7px 12px 0 rgba(0,0,0,0.2), 0 2px 15px 0 rgba(0,0,0,0.19) !important;
+}
+
+.columns {
+    display: flex;
+    margin-top: 20px;
+    height: 96%;
+}
+
+.columns div {
+    flex: 1;
+}
+
+.img {
+    background-image: url(img/Info_Image.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: auto;
+    border-radius: 5px;
+}
+
+.infoText {
+    margin-left: 18px;
+    font-family: 'Trispace', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    overflow-y: auto;  
+}
+
+.closeInfo {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 100;
+    color: #404040 !important;
+}
+
+.closeInfo:hover {
+    color: #66c2a5;
+}
+
+.infoHeader {
+    font-family: 'Trispace', sans-serif;
+    font-weight: 500 !important;
+    font-size: 26px !important;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/**********Custom Scrollbar***********/
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #707070; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #707070; 
+}
+
+/***Loader GIF Code****/
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loading {
+    height: 70px;
+    width: 70px;
+}
+
+/****Responsive Code****/
+
+@media (max-width: 580px) {
+  .subTitle {
+    display: none;
+  } 
+
+  #homeButton {
+    margin-right: 5px !important;
+  }
+
+  .esri-popup__main-container {
+    margin-bottom: 65px !important;
+    margin-left: 20px !important;
+    width: calc(100% - 40px) !important;
+    max-height: 300px !important;
+  }
+
+  #infoDiv {
+    width: calc(100% - 80px) !important;
+  }
+
+  ul.slides {
+    position: absolute !important;
+    width: calc(100% - 40px) !important;
+    height: 350px !important;
+    left: 20px !important;
+    bottom: 60px !important;
+  }
+
+  #content {
+    height: 77% !important;
+  }
+
+  .controls-visible label {
+    width: 5px;
+    height: 5px;
+    margin: 0 1px;
+  }
+
+  .navigator i {
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .navbar {
+    height: 45px;
+  }
+  
+  .navbar-line {
+    top: 41px;
+  }
+  
+  .title {
+    font-size: 19px !important;
+  }
+  
+  .subTitle {
+    font-size: 16px !important;
+  }
+  
+  .helpButton {
+    padding: 2px;
+  }
+
+  #zoomButtonDiv {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(146, 146, 146, 0.9);
+    color: white;
+    text-align: center;
+    display: none;
+    height: 50px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
+  }
+
+  #homeButton {
+    margin-right: 25px;
+  }
+
+  #labelButton {
+    font-size: 13px;
+    margin-right: 0px;
+  }
+
+  .ButtonTwo {
+    font-size: 13px;
+  }
+
+  .esri-home {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .esri-zoom .esri-widget--button {
+    width: 30px;
+    height: 30px;
+  }
+
+  #labelButton {
+    width: 100px;
+    height: 30px;
+  }
+
+  #tourButtonDiv {
+    display: none;
+  }
+
+  .ButtonTwo {
+    display: block;
+    width: 100px;
+    height: 30px;
+  }
+
+  #infoDiv {
+    width: calc(100% - 150px);
+    height: 50% !important;
+  }
+
+  .img {
+    display: none;
+  }
+
+  .infoText {
+    margin-left: 0px;
+    overflow-y: auto;  
+  }
+
+  ul.slides {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    left: 20px;
+    bottom: 60px;
+  }
+
+  #content {
+    height: 83%;
+  }
+
+}

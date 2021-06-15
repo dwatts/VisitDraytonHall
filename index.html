@@ -1,0 +1,313 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta property="og:title" content="Visit Drayton Hall">
+    <meta property="og:description" content="Take a virtual tour of historic Drayton Hall with this 3D web application.">
+    <meta property="og:image" content="img/Drayton_Thumb.PNG">
+    <meta name="author" content="Daniel H. Watts"/>
+    <meta property="og:url" content="https://dwatts.github.io/Drayton/">
+    <meta name="twitter:card" content="img/Drayton_Thumb.PNG">  
+
+<title>Visit Drayton Hall</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet"/>  
+    <link href="https://fonts.googleapis.com/css2?family=Trispace:wght@100;200;400;600;700;800&display=swap" rel="stylesheet">
+      
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="titleHolder">
+        <div class="title">Visit Drayton Hall</div>
+        <div class="subTitle">Explore an Architectural Treasure</div>
+      </div>
+      <div id="helpHolder">  
+        <button id="infoButton" class='helpButton'><i class="far fa-question-circle"></i></button>
+      </div>
+      <div class="navbar-line"></div>
+    </div>
+
+
+    <div id="viewDiv"></div>
+
+
+    <div id="zoomButtonDiv">
+      <div id="zoomContainer">
+        <div id="zoomButtons"></div>
+        <div id="homeButton"></div>
+        <button id="labelButton" class="labelButton">Labels OFF</button>
+        <button id="tourTwo" class="buttonTwo">Take a Tour</button>
+      </div>  
+    </div>
+    
+    <div id="tourButtonDiv">
+      <button id="tour" class="button">Take a Tour</button>
+    </div>  
+    
+    <div id="infoDiv">
+        <a class="closeInfo"><i class="esri-icon-close" id="closeInfo"></i></a>
+        <div class="columns">
+            <div class="img"></div>
+            <div class="infoText"><div class=infoHeader>About the App</div><p>Built in the mid-18th century by John Drayton, Drayton Hall is one of the most significant extant plantation houses in the United States. Unlike many of its neighbors, Drayton Hall survived the chaotic and destructive finale of the Civil War and has remained remarkably unchanged over the course of its almost 300 year history. Important for many reasons, including as a site for educating the public on the plantation and slave economy of the antebellum South, it is also known for its stunning Palladian architectural details and the care with which it has been preserved.</p><p>This application was developed as a demonstration project for ways in which 3D mapping technology can be applied to historic sites that were closed due to the pandemic and are in need of digital tools that can provide a virtual tour experience. To take a virtual tour of Drayton Hall click the 'Take a Tour' button in the lower left corner of the screen.</p><p>All building models were completed using a combination of SketchUp and Esri's CityEngine.</p><p>All images included in this application were sourced from the Library of Congress (LOC) and have no copyright restrictions - either because of their age or because they were produced by the US Federal Government - or have a Creative Commons license. The vast majority of the images and plans were produced by the <a href="https://www.nps.gov/hdp/" target="_blank">National Park Service’s Historic American Building Survey</a> and are available for download from the <a href="https://www.loc.gov/resource/hhh.sc0132.sheet?st=gallery" target="_blank">LOC</a>.</p><p>Application copyright © 2021 <a href="https://www.danielhwatts.com" target="_blank">Daniel H. Watts</a></p>
+            </div>
+        </div>
+    </div>  
+      
+<!-- Start of Carousel Code-->      
+      
+    <ul class="slides">
+           
+      <input type="radio" id="control-1" value="1" name="control" checked>
+      <input type="radio" id="control-2" value="2" name="control">
+      <input type="radio" id="control-3" value="3" name="control">
+      <input type="radio" id="control-4" value="4" name="control">
+      <input type="radio" id="control-5" value="5" name="control">
+      <input type="radio" id="control-6" value="6" name="control">
+      <input type="radio" id="control-7" value="7" name="control">
+      <input type="radio" id="control-8" value="8" name="control">
+      <input type="radio" id="control-9" value="9" name="control">
+      <input type="radio" id="control-10" value="10" name="control">
+      <input type="radio" id="control-11" value="11" name="control">
+      <input type="radio" id="control-12" value="12" name="control"> 
+    
+      <!--  Left/Right Button  -->
+      <div class="navigator slide-1">
+        <label for="control-12">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-2">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+
+      <div class="navigator slide-2">
+        <label for="control-1">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-3">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+
+      <div class="navigator slide-3">
+        <label for="control-2">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-4">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+        
+      <div class="navigator slide-4">
+        <label for="control-3">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-5">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+    
+      <div class="navigator slide-5">
+        <label for="control-4">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-6">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+        
+      <div class="navigator slide-6">
+        <label for="control-5">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-7">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+        
+      <div class="navigator slide-7">
+        <label for="control-6">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-8">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+        
+      <div class="navigator slide-8">
+        <label for="control-7">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-9">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+        
+      <div class="navigator slide-9">
+        <label for="control-8">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-10">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>    
+        
+      <div class="navigator slide-10">
+        <label for="control-9">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-11">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+        
+      <div class="navigator slide-11">
+        <label for="control-10">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-12">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>
+        
+      <div class="navigator slide-12">
+        <label for="control-11">
+          <i class="esri-icon-arrow-left-circled"></i>
+        </label>
+        <label for="control-1">
+          <i class="esri-icon-arrow-right-circled"></i>
+        </label>
+      </div>   
+        
+      <!--  /Left/Right Button  -->
+
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Drayton.jpg">
+          <h1>Drayton Hall</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\SW_Facade.jpg">
+          <h1>Palladian Design</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\SW_Facade_Detail.jpg">
+          <h1>Southwest Facade</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Portico_Detail.jpg">
+          <h1>Front Portico</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>    
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\NE_Facade.jpg">
+          <h1>Northeast Facade</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Palladian_Details.jpg">
+          <h1>Palladian Details</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>    
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Roof_Detail.jpg">
+          <h1>An Evolving Roof</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Basement_Detail.jpg">
+          <h1>The Basement</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Flankers.PNG">
+          <h1>Outbuildings</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Collonade.jpg">
+          <h1>Connecting Collonades</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>    
+      <li class="slide">
+          <div id="content">
+          <img class="imageBox" src="img\Grounds.jpg">
+          <h1>The Grounds</h1>      
+              <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+          </div>
+      </li>
+      <li class="slide">
+          <div id="content">
+            <img class="imageBox" src="img\Conclusion.jpg">
+            <h1>Conclusion</h1>      
+                <div class="textBox"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p> <p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu.</p><p>Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci sagittis eu volutpat odio facilisis mauris sit amet. Quisque sagittis purus sit amet volutpat consequat. Malesuada bibendum arcu vitae elementum curabitur. Netus et malesuada fames ac. Maecenas sed enim ut sem viverra aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Pharetra massa massa ultricies mi quis hendrerit. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Sit amet cursus sit amet dictum sit amet. Magna sit amet purus gravida quis blandit.</p></div>
+            </div>
+      </li>
+        
+        
+
+      <a class="closeTour"><i class="esri-icon-close" id="closeTour"></i></a> 
+        
+      <div class="controls-visible">
+        <label for="control-1"></label>
+        <label for="control-2"></label>
+        <label for="control-3"></label>
+        <label for="control-4"></label>
+        <label for="control-5"></label>
+        <label for="control-6"></label> 
+        <label for="control-7"></label>
+        <label for="control-8"></label>
+        <label for="control-9"></label>
+        <label for="control-10"></label>
+        <label for="control-11"></label>
+        <label for="control-12"></label>
+      </div>
+    </ul>  
+      
+<!--Footer and Loader Code-->  
+
+    <div class="footer">
+      <div id="zoomButtons"></div>
+      <div id="homeButton"></div>
+    </div>  
+
+    <div id="loader">
+      <img id='loading' src="img/loader.gif"/>  
+    </div> 
+
+    <script src="js/renderers.js"></script> 
+    <script src="https://js.arcgis.com/4.18/"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>     
+    <script src="js/script.js"></script>
+      
+  </body>
+</html>
