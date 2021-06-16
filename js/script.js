@@ -979,7 +979,7 @@
         var resizable = document.querySelector('ul.slides');
 
         puller = document.getElementById('puller');
-        puller.addEventListener('mousedown', initDrag, false);
+        puller.addEventListener('touchstart', initDrag, false);
 
         var /*startX,*/ startY, startWidth, startHeight;
 
@@ -988,8 +988,8 @@
           startY = e.clientY;
           //startWidth = parseInt(document.defaultView.getComputedStyle(p).width, 10);
           startHeight = parseInt(document.defaultView.getComputedStyle(resizable).height, 10);
-          document.documentElement.addEventListener('mousemove', doDrag, false);
-          document.documentElement.addEventListener('mouseup', stopDrag, false);
+          document.documentElement.addEventListener('touchmove', doDrag, false);
+          document.documentElement.addEventListener('touchend', stopDrag, false);
         }
 
         function doDrag(e) {
@@ -998,8 +998,8 @@
         }
 
         function stopDrag(e) {
-            document.documentElement.removeEventListener('mousemove', doDrag, false);    
-            document.documentElement.removeEventListener('mouseup', stopDrag, false);
+            document.documentElement.removeEventListener('touchmove', doDrag, false);    
+            document.documentElement.removeEventListener('touchend', stopDrag, false);
         }
 
         /**********Button Code***********/
