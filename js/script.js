@@ -660,7 +660,7 @@
         //view.ui.add(homeBtn, "manual");   
         //view.ui.add(zoom, "manual");
             
-        view.watch('camera.tilt', function(newValue, oldValue, property, object) {
+        /*view.watch('camera.tilt', function(newValue, oldValue, property, object) {
           console.log(property , newValue);
         });
           
@@ -670,7 +670,7 @@
           
         view.watch('camera.heading', function(newValue, oldValue, property, object) {
           console.log(property , newValue);
-        });
+        });*/
 
         watchUtils.whenTrueOnce(view, "updating", function(evt) {
           $("#loading").show();
@@ -680,75 +680,29 @@
           $("#loading").hide();
         });
           
-///Start Scroll Test////
-          
+///Start Carousel Code////    
         $(document).ready(function() {
-
-            var widths = [0, 580];
-            
             $('input:radio[name=control]').change(function() {
                 if (this.id == 'control-1') {
-
-                  function resizeFn() {
-                    if (window.innerWidth>=widths[0] && window.innerWidth<=widths[1]) {
-                      view
-                      .goTo(
-                        {
-                          position: {
-                              latitude: 32.87050254871371,  
-                              longitude: -80.076649, 
-                              z: 17.867
-                            },
-                            tilt: 73.97067,
-                            heading: 40.3954
-                          },    
-                        {
-                          speedFactor: 0.4,
-                          easing: "out-quint"
-                        }
-                      )
-                    } else {
-                      view
-                      .goTo(
-                        {
-                          position: {
-                              latitude: 32.8698378484793,  
-                              longitude: -80.07735150716393, 
-                              z: 54.7
-                            },
-                            tilt: 73.96921680961553,
-                            heading: 40.39497407723208
-                          },    
-                        {
-                          speedFactor: 0.4,
-                          easing: "out-quint"
-                        }
-                      )
-                    } 
-                    }
-                    window.onresize = resizeFn;
-                    resizeFn();
-
-                    /*view
-                      .goTo(
-                        {
-                          position: {
-                              latitude: 32.8698378484793,  
-                              longitude: -80.07735150716393, 
-                              z: 54.7
-                            },
-                            tilt: 73.96921680961553,
-                            heading: 40.39497407723208
-                          },    
-                        {
-                          speedFactor: 0.4,
-                          easing: "out-quint"
-                        }
-                      )*/
-                }
-                else if (this.id == 'control-2') {
                     view
                       .goTo(
+                        {
+                          position: {
+                              latitude: 32.8698378484793,  
+                              longitude: -80.07735150716393, 
+                              z: 54.7
+                            },
+                            tilt: 73.96921680961553,
+                            heading: 40.39497407723208
+                          },    
+                        {
+                          speedFactor: 0.4,
+                          easing: "out-quint"
+                        }
+                      )
+                }
+                else if (this.id == 'control-2') {
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.870574528192186,    
@@ -759,14 +713,13 @@
                             heading: 40.6
                           },    
                         {
-                          speedFactor: 0.3,
+                          speedFactor: 0.8,
                           easing: "out-quint"
                         }
                       )
                 }
                 else if (this.id == 'control-3') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.870449235219354,    
@@ -783,8 +736,7 @@
                       )
                 }
                 else if (this.id == 'control-4') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.87078587875417,  
@@ -801,8 +753,7 @@
                       )
                 }
                 else if (this.id == 'control-5') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.8712168157753,  
@@ -819,8 +770,7 @@
                       )
                 }
                 else if (this.id == 'control-6') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.870935656772616,   
@@ -837,8 +787,7 @@
                       )
                 }
                 else if (this.id == 'control-7') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.870928519526316,    
@@ -849,14 +798,13 @@
                             heading: 86.26
                           },    
                         {
-                          speedFactor: 1,
+                          speedFactor: 0.6,
                           easing: "out-quint"
                         }
                       )
                 }
                 else if (this.id == 'control-8') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.8706270973621,    
@@ -873,8 +821,7 @@
                       )
                 }
                 else if (this.id == 'control-9') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.87039659600679,  
@@ -891,8 +838,7 @@
                       )
                 }
                 else if (this.id == 'control-10') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.870635758850526,  
@@ -909,8 +855,7 @@
                       )
                 }
                 else if (this.id == 'control-11') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.8662,   
@@ -927,8 +872,7 @@
                       )
                 }
                 else if (this.id == 'control-12') {
-                    view
-                      .goTo(
+                    view.goTo(
                         {
                           position: {
                               latitude: 32.870277385721224,   
@@ -958,23 +902,23 @@
               $("ul.slides").fadeToggle(1000);
               view.popup.visible = false;
               //$("input:radio[name=control][disabled=false]:first").attr('checked', true);
-              $("#buttonHolder").fadeToggle(1000);
-                  view
-                    .goTo(
-                      {
-                        position: {
-                            latitude: 32.8698378484793,  
-                            longitude: -80.07735150716393, 
-                            z: 54.7
-                          },
-                          tilt: 73.96921680961553,
-                          heading: 40.39497407723208
-                        },    
-                      {
-                        speedFactor: 0.4,
-                        easing: "out-quint"
-                      }
-                    ) 
+              //$("#buttonHolder").fadeToggle(1000);
+              view
+                .goTo(
+                  {
+                    position: {
+                        latitude: 32.8698378484793,  
+                        longitude: -80.07735150716393, 
+                        z: 54.7
+                      },
+                      tilt: 73.96921680961553,
+                      heading: 40.39497407723208
+                    },    
+                  {
+                    speedFactor: 0.6,
+                    easing: "out-quint"
+                  }
+                )
             } else {
               $("ul.slides").fadeToggle(1000);
             }
@@ -986,7 +930,7 @@
             $("ul.slides").fadeToggle(1000);
             view.popup.visible = false;
             //$("input:radio[name=control][disabled=false]:first").attr('checked', true);
-            $("#buttonHolder").fadeToggle(1000);
+            //$("#buttonHolder").fadeToggle(1000);
                 view
                   .goTo(
                     {
@@ -999,7 +943,7 @@
                         heading: 40.39497407723208
                       },    
                     {
-                      speedFactor: 0.4,
+                      speedFactor: 0.6,
                       easing: "out-quint"
                     }
                   ) 
@@ -1029,6 +973,36 @@
             $("#labelButton").html("Labels OFF");             
           }
         });
+
+        /**********Resize Tour Box Code***********/
+
+        var resizable = document.querySelector('ul.slides');
+
+        puller = document.getElementById('puller');
+        puller.addEventListener('mousedown', initDrag, false);
+
+        var /*startX,*/ startY, startWidth, startHeight;
+
+        function initDrag(e) {
+          //startX = e.clientX;
+          startY = e.clientY;
+          //startWidth = parseInt(document.defaultView.getComputedStyle(p).width, 10);
+          startHeight = parseInt(document.defaultView.getComputedStyle(resizable).height, 10);
+          document.documentElement.addEventListener('mousemove', doDrag, false);
+          document.documentElement.addEventListener('mouseup', stopDrag, false);
+        }
+
+        function doDrag(e) {
+          //p.style.width = (startWidth + e.clientX - startX) + 'px';
+          resizable.style.height = (startHeight - e.clientY + startY) + 'px';
+        }
+
+        function stopDrag(e) {
+            document.documentElement.removeEventListener('mousemove', doDrag, false);    
+            document.documentElement.removeEventListener('mouseup', stopDrag, false);
+        }
+
+        /**********Button Code***********/
         
          $(document).ready(function(){
           $("#infoButton").click(function(){
