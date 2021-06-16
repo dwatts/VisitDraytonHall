@@ -660,7 +660,7 @@
         //view.ui.add(homeBtn, "manual");   
         //view.ui.add(zoom, "manual");
             
-        /*view.watch('camera.tilt', function(newValue, oldValue, property, object) {
+        view.watch('camera.tilt', function(newValue, oldValue, property, object) {
           console.log(property , newValue);
         });
           
@@ -670,7 +670,7 @@
           
         view.watch('camera.heading', function(newValue, oldValue, property, object) {
           console.log(property , newValue);
-        });*/
+        });
 
         watchUtils.whenTrueOnce(view, "updating", function(evt) {
           $("#loading").show();
@@ -683,9 +683,32 @@
 ///Start Scroll Test////
           
         $(document).ready(function() {
+
+            var widths = [0, 580];
+            
             $('input:radio[name=control]').change(function() {
                 if (this.id == 'control-1') {
-                    view
+
+                  function resizeFn() {
+                    if (window.innerWidth>=widths[0] && window.innerWidth<=widths[1]) {
+                      view
+                      .goTo(
+                        {
+                          position: {
+                              latitude: 32.87050254871371,  
+                              longitude: -80.076649, 
+                              z: 17.867
+                            },
+                            tilt: 73.97067,
+                            heading: 40.3954
+                          },    
+                        {
+                          speedFactor: 0.4,
+                          easing: "out-quint"
+                        }
+                      )
+                    } else {
+                      view
                       .goTo(
                         {
                           position: {
@@ -701,6 +724,27 @@
                           easing: "out-quint"
                         }
                       )
+                    } 
+                    }
+                    window.onresize = resizeFn;
+                    resizeFn();
+
+                    /*view
+                      .goTo(
+                        {
+                          position: {
+                              latitude: 32.8698378484793,  
+                              longitude: -80.07735150716393, 
+                              z: 54.7
+                            },
+                            tilt: 73.96921680961553,
+                            heading: 40.39497407723208
+                          },    
+                        {
+                          speedFactor: 0.4,
+                          easing: "out-quint"
+                        }
+                      )*/
                 }
                 else if (this.id == 'control-2') {
                     view
