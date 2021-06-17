@@ -454,12 +454,12 @@
         
         function setContentInfo(results) {
         
-            var drayton = "<img class='popupImage' src='img/popup_drayton.jpg'/>";
+            var drayton = "<img class='popupImage' src='img/main_house.jpg'/>";
 
             
             var popupElement = document.createElement("div");
         
-            popupElement.innerHTML = "<table><tbody><tr><td>" + drayton + "</td></tr></tbody></table><h1>Drayton Hall</h1><table><tbody><tr><td><h2>Construction Date:</h2></td><td><h3>1738 - 1742</h3></td></tr><tr><td><h2>Building Use:</h2></td><td><h3>Main House</h3></td></tr><tr><td><h2>Style:</h2></td><td><h3> Palladian</h3></td></tr><tr><td><h2>Primary Material:</h2></td><td><h3>Brick</h3></td></tr><tr><td><h2>Notes:</h2></td><td><h3>Drayton Hall was built between 1738 and 1742 by John Drayton. It is located approximately 15 miles from Charleston, South Carolina and is considered by many to be one of the finest extant plantation houses in the country.</h3></td></tr></tbody></table>"
+            popupElement.innerHTML = "<table><tbody><tr><td>" + drayton + "</td></tr></tbody></table><p class='captionPop'>Image by author</p><h1>Drayton Hall</h1><table><tbody><tr><td><h2>Construction Date:</h2></td><td><h3>1738 - 1742</h3></td></tr><tr><td><h2>Building Use:</h2></td><td><h3>Main House</h3></td></tr><tr><td><h2>Style:</h2></td><td><h3> Palladian</h3></td></tr><tr><td><h2>Primary Material:</h2></td><td><h3>Brick</h3></td></tr><tr><td><h2>Notes:</h2></td><td><h3>Drayton Hall was built between 1738 and 1742 by John Drayton. It is located approximately 15 miles from Charleston, South Carolina and is considered by many to be one of the finest extant plantation houses in the country.</h3></td></tr></tbody></table>"
             
             return popupElement;
         
@@ -489,35 +489,27 @@
           symbol: draytonHouseSymbol
         };
         
-        //////////
+        /****Drayton Other Extant Buildings****/
         
-        var buildingTemplate = {
+        var buildingTemplateOne = {
           outFields: ["*"],
           content: function (feature) {
             return setContentInfoTwo(feature.graphic.attributes);
           },    
         };
         
-        const draytonOther = new SceneLayer({ url:"https://tiles.arcgis.com/tiles/CmuSiXApoWtqLYty/arcgis/rest/services/Drayton_Outbuildings/SceneServer",
+        const draytonOtherExtant = new SceneLayer({ url:"https://tiles.arcgis.com/tiles/CmuSiXApoWtqLYty/arcgis/rest/services/Drayton_Outbuildings/SceneServer",
         popupEnabled: true,
-        popupTemplate: buildingTemplate, 
-        definitionExpression: "OBJECTID NOT IN (1, 2, 3, 4, 5, 6, 7)",                                     
+        popupTemplate: buildingTemplateOne, 
+        definitionExpression: "OBJECTID IN (10, 11)",                                     
         visible: true,
         });
         
-        function setContentInfoTwo(results) {
-          //var CollonadeOne = "<img class='popupImage' src='img/Portico_Detail.jpg'/>";
-          //var CollonadeTwo = "<img class='popupImage' src='img/Portico_Detail.jpg'/>";            
-          var FlankerOne = "<img class='popupImage' src='img/drayton_flanker_one.png'/>";
-          var FlankerTwo = "<img class='popupImage' src='img/drayton_flanker_two.png'/>";            
-          var Office = "<img class='popupImage' src='img/popup_cabin.jpg'/>";            
-          var Well = "<img class='popupImage' src='img/well_image.jpg'/>";
+        function setContentInfoTwo(results) {         
+          var Office = "<img class='popupImage' src='img/privy.jpg'/>";            
+          var Well = "<img class='popupImage' src='img/well.jpg'/>";
           
           var image = (
-              //results.OBJECTID == 3 ? CollonadeOne :
-              //results.OBJECTID == 4 ? CollonadeTwo :
-              results.OBJECTID == 9 ? FlankerOne :
-              results.OBJECTID == 8 ? FlankerTwo :
               results.OBJECTID == 10 ? Office :
               results.OBJECTID == 11 ? Well :
               ''
@@ -525,10 +517,46 @@
           
           var popupElement = document.createElement("div");
       
-          popupElement.innerHTML = "<table><tbody><tr><td>" + image + "</td></tr></tbody></table><h1>" + results.Name + "</h1><table><tbody><tr><td><h2>Construction Date:</h2></td><td><h3>" + results.YrBuilt + "</h3></td></tr><tr><td><h2>Building Use:</h2></td><td><h3>"+ results.Use + "</h3></td></tr><tr><td><h2>Style:</h2></td><td><h3>" + results.Style + "</h3></td></tr><tr><td><h2>Primary Material:</h2></td><td><h3>Brick</h3></td></tr><tr><td><h2>Notes:</h2></td><td><h3>" + results.Note + "</h3></td></tr></tbody></table>";
+          popupElement.innerHTML = "<table><tbody><tr><td>" + image + "</td></tr></tbody></table><p class='captionPop'>Image by author</p><h1>" + results.Name + "</h1><div class='line'></div><table><tbody><tr><td><h2>Construction Date:</h2></td><td><h3>" + results.YrBuilt + "</h3></td></tr><tr><td><h2>Building Use:</h2></td><td><h3>"+ results.Use + "</h3></td></tr><tr><td><h2>Style:</h2></td><td><h3>" + results.Style + "</h3></td></tr><tr><td><h2>Primary Material:</h2></td><td><h3>Brick</h3></td></tr><tr><td><h2>Notes:</h2></td><td><h3>" + results.Note + "</h3></td></tr></tbody></table>";
           
           return popupElement;
         };
+
+        /****Drayton Other Non-Extant Buildings****/
+        
+        var buildingTemplateTwo = {
+          outFields: ["*"],
+          content: function (feature) {
+            return setContentInfoThree(feature.graphic.attributes);
+          },    
+        };
+        
+        const draytonOtherNonExtant = new SceneLayer({ url:"https://tiles.arcgis.com/tiles/CmuSiXApoWtqLYty/arcgis/rest/services/Drayton_Outbuildings/SceneServer",
+        popupEnabled: true,
+        popupTemplate: buildingTemplateTwo,
+        opacity: 0.2, 
+        definitionExpression: "OBJECTID IN (8, 9)",                                     
+        visible: true,
+        });
+        
+        function setContentInfoThree(results) {           
+          var FlankerOne = "<img class='popupImage' src='img/n_flanker.jpg'/>";
+          var FlankerTwo = "<img class='popupImage' src='img/s_flanker.jpg'/>";            
+          
+          var image = (
+              results.OBJECTID == 9 ? FlankerOne :
+              results.OBJECTID == 8 ? FlankerTwo :
+              ''
+          );
+          
+          var popupElement = document.createElement("div");
+      
+          popupElement.innerHTML = "<table><tbody><tr><td>" + image + "</td></tr></tbody></table><p class='captionPop'>Image by author</p><h1>" + results.Name + "</h1><div class='line'></div><table><tbody><tr><td><h2>Construction Date:</h2></td><td><h3>" + results.YrBuilt + "</h3></td></tr><tr><td><h2>Building Use:</h2></td><td><h3>"+ results.Use + "</h3></td></tr><tr><td><h2>Style:</h2></td><td><h3>" + results.Style + "</h3></td></tr><tr><td><h2>Primary Material:</h2></td><td><h3>Brick</h3></td></tr><tr><td><h2>Notes:</h2></td><td><h3>" + results.Note + "</h3></td></tr></tbody></table>";
+          
+          return popupElement;
+        };
+
+        /***Renderer for Other Buildings***/
       
         var otherEdges = {
           type: "solid",
@@ -549,16 +577,30 @@
           ]
         };
 
-        draytonOther.renderer = {
+        draytonOtherExtant.renderer = {
+          type: "simple",
+          symbol: draytonOtherSymbol
+        };
+
+        draytonOtherNonExtant.renderer = {
           type: "simple",
           symbol: draytonOtherSymbol
         };
         
         /***Add other buildings without popups***/
           
-        const draytonOtherTwo = new SceneLayer({ url:"https://tiles.arcgis.com/tiles/CmuSiXApoWtqLYty/arcgis/rest/services/Drayton_Outbuildings/SceneServer",
+        const draytonOtherNoPop = new SceneLayer({ url:"https://tiles.arcgis.com/tiles/CmuSiXApoWtqLYty/arcgis/rest/services/Drayton_Outbuildings/SceneServer",
         popupEnabled: false,
-        definitionExpression: "OBJECTID IN (1, 2, 3, 4, 5, 6, 7)",                                     
+        definitionExpression: "OBJECTID IN (1, 2, 5, 6, 7)",                                     
+        visible: true,
+        });
+
+        /***Add other buildings without popups***/
+  
+        const draytonOtherNoPopTransp = new SceneLayer({ url:"https://tiles.arcgis.com/tiles/CmuSiXApoWtqLYty/arcgis/rest/services/Drayton_Outbuildings/SceneServer",
+        popupEnabled: false,
+        opacity: 0.2,
+        definitionExpression: "OBJECTID IN (3, 4)",                                     
         visible: true,
         });
           
@@ -581,13 +623,18 @@
           ]
         };
 
-        draytonOther.renderer = {
+        draytonOtherNoPopTransp.renderer = {
+          type: "simple",
+          symbol: draytonOtherSymbol
+        };
+
+        draytonOtherNoPop.renderer = {
           type: "simple",
           symbol: draytonOtherSymbol
         };
           
         var map = new WebScene({
-          layers: [appBoundary, site, ashley, ashleyLabel, draytonHouse, draytonOther, draytonOtherTwo, roads, mound, lake, otherTrees, trees, siteLabelsHouse, siteLabelsBuildings, siteLabelsFeatures ],
+          layers: [appBoundary, site, ashley, ashleyLabel, draytonHouse, draytonOtherNonExtant, draytonOtherExtant, draytonOtherNoPopTransp, draytonOtherNoPop, roads, mound, lake, otherTrees, trees, siteLabelsHouse, siteLabelsBuildings, siteLabelsFeatures ],
           ground: "world-elevation"
         });
         
@@ -901,8 +948,6 @@
           if ($("ul.slides").css("display") == "none") {
               $("ul.slides").fadeToggle(1000);
               view.popup.visible = false;
-              //$("input:radio[name=control][disabled=false]:first").attr('checked', true);
-              //$("#buttonHolder").fadeToggle(1000);
               view
                 .goTo(
                   {
@@ -929,8 +974,6 @@
           if ($("ul.slides").css("display") == "none") {
             $("ul.slides").fadeToggle(1000);
             view.popup.visible = false;
-            //$("input:radio[name=control][disabled=false]:first").attr('checked', true);
-            //$("#buttonHolder").fadeToggle(1000);
                 view
                   .goTo(
                     {
