@@ -976,31 +976,28 @@
 
         /**********Resize Tour Box Code***********/
 
-        var resizable = document.querySelector('ul.slides');
+        /*var resizable = document.querySelector('ul.slides');
 
         puller = document.getElementById('puller');
-        puller.addEventListener('touchstart', initDrag, false);
+        puller.addEventListener('mousedown', initDrag, false);
 
-        var /*startX,*/ startY, startWidth, startHeight;
+        var startY, startHeight;
 
         function initDrag(e) {
-          //startX = e.clientX;
           startY = e.clientY;
-          //startWidth = parseInt(document.defaultView.getComputedStyle(p).width, 10);
           startHeight = parseInt(document.defaultView.getComputedStyle(resizable).height, 10);
-          document.documentElement.addEventListener('touchmove', doDrag, false);
-          document.documentElement.addEventListener('touchend', stopDrag, false);
+          document.documentElement.addEventListener('mousemove', doDrag, false);
+          document.documentElement.addEventListener('mouseup', stopDrag, false);
         }
 
         function doDrag(e) {
-          //p.style.width = (startWidth + e.clientX - startX) + 'px';
           resizable.style.height = (startHeight - e.clientY + startY) + 'px';
         }
 
         function stopDrag(e) {
-            document.documentElement.removeEventListener('touchmove', doDrag, false);    
-            document.documentElement.removeEventListener('touchend', stopDrag, false);
-        }
+          document.documentElement.removeEventListener('mousemove', doDrag, false);    
+          document.documentElement.removeEventListener('mouseup', stopDrag, false);
+        }*/
 
         /**********Button Code***********/
         
