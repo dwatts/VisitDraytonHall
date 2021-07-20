@@ -290,6 +290,10 @@ p {
   /*top: 55px;*/
 }
 
+div.esri-feature.esri-widget {
+  background-color: rgba(255,255,255,0) !important;
+}
+
 .esri-widget {
   padding-bottom: 0px !important;
   background-color: rgba(235, 235, 235, 0.9) !important;
