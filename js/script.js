@@ -720,11 +720,11 @@
         });*/
 
         watchUtils.whenTrueOnce(view, "updating", function(evt) {
-          $("#loading").show();
+          $("#loader").show();
         });
 
         watchUtils.whenFalse(view, "updating", function(evt) {
-          $("#loading").hide();
+          $("#loader").hide();
         });
           
 ///Start Carousel Code////    
